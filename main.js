@@ -1,8 +1,15 @@
 let input = document.getElementById('input-number')
 let grid = document.getElementById('grid')
+let numWarning = document.getElementById('max-num-warning')
 
 function generateNumbers() {
   let inputNum = Number(input.value)
+  if (inputNum > 10000) {
+    inputNum = 10000
+    numWarning.textContent = 'Input is limited to 10,000 to prevent your computer from lagging.'
+  } else {
+    numWarning.textContent = ''
+  }
 
   if (Math.floor(inputNum) !== inputNum && inputNum < 0) {
     document.querySelector('p').textContent = 'number must be at least 1 and not a decimal'
